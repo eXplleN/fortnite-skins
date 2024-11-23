@@ -1,0 +1,8 @@
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: aquamarine;
+    height: 8vh;
+    text-align: center;
+  }
