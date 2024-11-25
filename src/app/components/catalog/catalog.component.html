@@ -1,1 +1,22 @@
-<p>catalog works!</p>
+
+<div class="skin-grid">
+  @for(skin of skins; track $index){
+    <div class="skin-card">
+      <img [src]="skin.image" class="skin-image" />
+      <h3 class="skin-name">{{ skin.name }}</h3>
+      <div class="skin-details">
+        <span class="skin-rarity" [ngClass]="skin.rarity.toLowerCase()">
+          {{ skin.rarity }}
+        </span>
+        <span class="skin-price">{{ skin.price }} V-Bucks</span>
+      </div>
+      <a [routerLink]="['/details', skin._id]" class="details-link">
+        <button class="details-button">
+          View Details
+        </button>
+      </a>
+    </div>
+  }
+</div>
+
+  

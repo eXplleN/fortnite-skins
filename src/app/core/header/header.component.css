@@ -1,0 +1,14 @@
+header {
+    background-color: aquamarine;
+    padding: 20px;
+}
+
+ul {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 20px;
+    list-style: none;
+}
+li {
+    cursor: pointer;
+}
