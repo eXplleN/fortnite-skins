@@ -1,0 +1,10 @@
+@if(skin){
+  <div>
+    <img [src]="skin.image" [alt]="skin.name" />
+    <h1>{{ skin.name }}</h1>
+    <p><strong>Rarity:</strong> {{ skin.rarity }}</p>
+    <p>{{ skin.description }}</p>
+    <button [routerLink]="['/catalog']">Back to Catalog</button>
+  </div>
+}
+

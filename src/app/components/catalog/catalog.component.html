@@ -1,22 +1,24 @@
-
 <div class="skin-grid">
   @for(skin of skins; track $index){
-    <div class="skin-card">
-      <img [src]="skin.image" class="skin-image" />
-      <h3 class="skin-name">{{ skin.name }}</h3>
-      <div class="skin-details">
-        <span class="skin-rarity" [ngClass]="skin.rarity.toLowerCase()">
-          {{ skin.rarity }}
-        </span>
-        <span class="skin-price">{{ skin.price }} V-Bucks</span>
-      </div>
-      <a [routerLink]="['/details', skin._id]" class="details-link">
-        <button class="details-button">
-          View Details
-        </button>
-      </a>
+  <div class="skin-card">
+    <img [src]="skin.image" />
+    <h3>{{ skin.name }}</h3>
+    <div>
+      <span class="skin-rarity" [ngClass]="getRarityClass(skin.rarity)">
+        {{ skin.rarity }}
+      </span>
     </div>
+    <div class="button-container">
+      <button class="details-button" [routerLink]="['/details', skin._id]">
+        View Details
+      </button>
+      <button class="edit-button" [routerLink]="['/edit', skin._id]">
+        Edit
+      </button>
+      <button class="delete-button" (click)="deleteSkin(skin._id)">
+        Delete
+      </button>
+    </div>
+  </div>
   }
 </div>
-
-  

@@ -1,0 +1,19 @@
+<div class="form-container">
+    <h2>Add Skin</h2>
+    <form (ngSubmit)="addSkin()">
+      <label for="name">Name:</label>
+      <input type="text" id="name" [(ngModel)]="skin.name" name="name" required />
+  
+      <label for="image">Image URL:</label>
+      <input type="text" id="image" [(ngModel)]="skin.image" name="image" required />
+  
+      <label for="rarity">Rarity:</label>
+      <input type="text" id="rarity" [(ngModel)]="skin.rarity" name="rarity" required />
+  
+      <label for="description">Description:</label>
+      <textarea id="description" [(ngModel)]="skin.description" name="description" required></textarea>
+  
+      <button type="submit">Add Skin</button>
+    </form>
+  </div>
+  

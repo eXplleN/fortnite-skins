@@ -17,6 +17,10 @@ export class SkinService {
   getSkinById(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
+
+  getById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
 }
 
 

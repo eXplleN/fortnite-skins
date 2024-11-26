@@ -4,11 +4,14 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   padding: 20px;
-  background-color: #121212; 
+  background-color: #121212;
 }
 
 
 .skin-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   background: #1e1e1e;
   border-radius: 10px;
   overflow: hidden;
@@ -16,6 +19,7 @@
   color: #fff;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
+  
 }
 
 .skin-card:hover {
@@ -35,6 +39,13 @@
   font-size: 18px;
   margin: 10px 0;
   text-transform: capitalize;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-right: 10px;    
 }
 
 
@@ -43,6 +54,7 @@
   justify-content: space-between;
   padding: 10px 15px;
   font-size: 14px;
+  align-items: center; 
 }
 
 
@@ -50,6 +62,7 @@
   padding: 5px 10px;
   border-radius: 5px;
   text-transform: capitalize;
+  margin-right: 10px;    
 }
 
 .skin-rarity.common {
@@ -87,15 +100,54 @@
   background: linear-gradient(45deg, #1e90ff, #ff1493);
   border: none;
   color: white;
-  padding: 10px 15px;
-  margin: 10px 0;
+  padding: 8px 12px;   
   text-transform: uppercase;
   font-weight: bold;
+  font-size: 14px;      
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.3s;
 }
 
 .details-button:hover {
+  background: linear-gradient(45deg, #ff3f14, #e9ff1e);
+}
+
+.details-button:active {
+  transform: scale(0.98);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.edit-button, .delete-button {
+  background: linear-gradient(45deg, #1e90ff, #ff1493);
+  border: none;
+  color: white;
+  padding: 8px 12px;    
+  margin: 5px 0;       
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 14px;      
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+
+.edit-button:hover, .delete-button:hover {
   background: linear-gradient(45deg, #ff1493, #1e90ff);
 }
+
+
+.edit-button {
+  background: linear-gradient(45deg, #32cd32, #228b22); 
+}
+
+.delete-button {
+  background: linear-gradient(45deg, #ff6347, #ff4500); 
+}
+
+
+
+
