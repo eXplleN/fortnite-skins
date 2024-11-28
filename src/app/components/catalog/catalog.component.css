@@ -1,17 +1,15 @@
-
 .skin-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
   gap: 20px;
   padding: 20px;
   background-color: #121212;
 }
 
-
 .skin-card {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px;
   background: #1e1e1e;
   border-radius: 10px;
   overflow: hidden;
@@ -19,7 +17,8 @@
   color: #fff;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
-  
+  max-width: 350px; 
+  margin: auto; 
 }
 
 .skin-card:hover {
@@ -27,42 +26,40 @@
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
 }
 
-
 .skin-image {
-  width: 100%;
-  height: auto;
+  width: 100%; 
+  height: auto; 
+  max-height: 300px; 
+  object-fit: contain; 
   display: block;
+  background-color: #000; 
+  margin: 0 auto; 
 }
 
 
 .skin-name {
-  font-size: 18px;
-  margin: 10px 0;
+  font-size: 22px; 
+  margin: 0;
+  padding: 0 10px;
   text-transform: capitalize;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  display: block;
-  width: 100%;
-  text-align: center;
-  margin-right: 10px;    
 }
-
 
 .skin-details {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 10px 15px;
-  font-size: 14px;
-  align-items: center; 
+  font-size: 16px;
 }
 
-
 .skin-rarity {
-  padding: 5px 10px;
+  padding: 5px 15px;
   border-radius: 5px;
   text-transform: capitalize;
-  margin-right: 10px;    
+  font-weight: bold;
 }
 
 .skin-rarity.common {
@@ -90,64 +87,43 @@
   color: #000;
 }
 
-
 .skin-price {
   font-weight: bold;
+  color: #f5f5f5;
 }
 
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding-bottom: 10px;
+}
 
-.details-button {
+.details-button,
+.edit-button,
+.delete-button {
   background: linear-gradient(45deg, #1e90ff, #ff1493);
   border: none;
   color: white;
-  padding: 8px 12px;   
-  text-transform: uppercase;
+  padding: 8px 12px;
+  font-size: 14px;
   font-weight: bold;
-  font-size: 14px;      
+  text-transform: uppercase;
   border-radius: 5px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.2s;
 }
 
-.details-button:hover {
+.details-button:hover,
+.edit-button:hover,
+.delete-button:hover {
   background: linear-gradient(45deg, #ff3f14, #e9ff1e);
+  transform: scale(1.1);
 }
 
-.details-button:active {
+.details-button:active,
+.edit-button:active,
+.delete-button:active {
   transform: scale(0.98);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
-
-
-
-.edit-button, .delete-button {
-  background: linear-gradient(45deg, #1e90ff, #ff1493);
-  border: none;
-  color: white;
-  padding: 8px 12px;    
-  margin: 5px 0;       
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 14px;      
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-
-.edit-button:hover, .delete-button:hover {
-  background: linear-gradient(45deg, #ff1493, #1e90ff);
-}
-
-
-.edit-button {
-  background: linear-gradient(45deg, #32cd32, #228b22); 
-}
-
-.delete-button {
-  background: linear-gradient(45deg, #ff6347, #ff4500); 
-}
-
-
-
-

@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
 import { CatalogComponent } from './components/catalog/catalog.component';
-import { DetailsComponent } from './components/details/details.component';
 import { AddSkinComponent } from './components/add-skin/add-skin.component';
 import { EditSkinComponent } from './components/edit-skin/edit-skin.component';
+import { DetailsComponent } from './components/details/details.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'catalog', pathMatch: 'full' },

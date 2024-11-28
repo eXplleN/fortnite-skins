@@ -1,7 +1,7 @@
 <div class="skin-grid">
   @for(skin of skins; track $index){
   <div class="skin-card">
-    <img [src]="skin.image" />
+    <img [src]="skin.image"  class="skin-image"/>
     <h3>{{ skin.name }}</h3>
     <div>
       <span class="skin-rarity" [ngClass]="getRarityClass(skin.rarity)">
