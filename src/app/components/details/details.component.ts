@@ -28,4 +28,21 @@ export class DetailsComponent implements OnInit {
       console.error(error); 
     }
   }
+
+  getRarityClass(rarity: string): string {
+    switch (rarity.toLowerCase()) {
+      case 'common':
+        return 'common';
+      case 'uncommon':
+        return 'uncommon';
+      case 'rare':
+        return 'rare';
+      case 'epic':
+        return 'epic';
+      case 'legendary':
+        return 'legendary';
+      default:
+        return '';
+    }
+  }
 }

@@ -1,6 +1,6 @@
 <div class="form-container">
     <h2>Add Skin</h2>
-    <form (ngSubmit)="addSkin()" #skinForm="ngForm">
+    <form (ngSubmit)="createSkin()" #skinForm="ngForm">
       <label for="name">Name:</label>
       <input type="text" id="name" [(ngModel)]="skin.name" name="name" required />
   

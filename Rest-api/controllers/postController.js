@@ -38,7 +38,7 @@ function editPost(req, res, next) {
     const { postText } = req.body;
     const { _id: userId } = req.user;
 
-    // if the userId is not the same as this one of the post, the post will not be updated
+    
     postModel.findOneAndUpdate({ _id: postId, userId }, { text: postText }, { new: true })
         .then(updatedPost => {
             if (updatedPost) {

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const utils = require('../utils')
 
-// middleware that is specific to this router
+
 
 const data = {
     "name": "rest-api",

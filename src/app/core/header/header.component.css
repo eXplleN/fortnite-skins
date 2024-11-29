@@ -38,7 +38,6 @@ header nav a {
 }
 
 header nav a:hover {
-  background: linear-gradient(45deg, #ff1493, #1e90ff);
-  color: #000;
-  cursor: pointer;
+  background: linear-gradient(45deg, #ff3f14, #e9ff1e);
+  transform: scale(1.1);
 }

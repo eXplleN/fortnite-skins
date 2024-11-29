@@ -1,10 +1,16 @@
 @if(skin){
-  <div>
+  <div class="details-container">
     <img [src]="skin.image" [alt]="skin.name" />
-    <h1>{{ skin.name }}</h1>
-    <p><strong>Rarity:</strong> {{ skin.rarity }}</p>
+    <h2 class="details-header">{{ skin.name }}</h2>
+    <div class="rarity-container">
+      <span class="rarity" [ngClass]="getRarityClass(skin.rarity)">
+        {{ skin.rarity }}
+      </span>
+    </div>
     <p>{{ skin.description }}</p>
-    <button [routerLink]="['/catalog']">Back to Catalog</button>
+    <div class="back-btn-container">
+      <button [routerLink]="['/catalog']" class="back-btn">Back to Catalog</button>
+    </div>
   </div>
 }
 

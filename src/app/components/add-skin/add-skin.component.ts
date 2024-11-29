@@ -15,7 +15,7 @@ export class AddSkinComponent {
 
   constructor(private router: Router) {}
 
-  async addSkin() {
+  async createSkin() {
     try {
       const response = await fetch('http://localhost:3000/api/skins', {
         method: 'POST',

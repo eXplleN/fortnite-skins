@@ -1,15 +1,17 @@
 const express = require('express');
 const router = express.Router();
-const Skin = require('../models/Skin'); 
+const Skin = require('./models/Skin'); 
 
 
-router.get('/skins', async (req, res) => {
-  try {
-    const skins = await Skin.find(); 
-    res.json(skins);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
+router.get('/skins', (req, res) => {
+  Skin.find()
+    .sort({ _id: -1 })  
+    .exec((err, skins) => {
+      if (err) {
+        return res.status(500).json({ message: 'Error fetching skins', error: err });
+      }
+      res.status(200).json(skins);
+    });
 });
 
 

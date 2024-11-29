@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -10,21 +10,30 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent implements OnInit {
-  skins: any[] = []; 
+  skins: any[] = []
+  displayedSkins: any[] = [];
+  currentPage: number = 1; 
+  itemsPerPage: number = 10; 
+  totalPages: number = 0;
+
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
     this.fetchSkins(); 
   }
 
-  
-  async fetchSkins() {
-    try {
-      const response = await fetch('http://localhost:3000/api/skins');
-      if (!response.ok) throw new Error(`Error fetching skins: ${response.statusText}`);
-      this.skins = await response.json(); 
-    } catch (error) {
-      console.error(error); 
-    }
+  fetchSkins(): void {
+    
+    fetch('http://localhost:3000/api/skins') 
+      .then((response) => response.json())
+      .then((data) => {
+        this.skins = data; 
+        this.totalPages = Math.ceil(this.skins.length / this.itemsPerPage); 
+        this.loadPage(this.currentPage); 
+      })
+      .catch((error) => {
+        console.error('Error fetching skins:', error);
+      });
   }
 
   async deleteSkin(id: string) {
@@ -58,6 +67,36 @@ export class CatalogComponent implements OnInit {
         return '';
     }
   }
+
+  loadPage(page: number): void {
+    const startIndex = (page - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.displayedSkins = this.skins.slice(startIndex, endIndex); 
+    this.currentPage = page; 
+  }
+
+  
+  prevPage(): void {
+    if (this.currentPage > 1) {
+      this.loadPage(this.currentPage - 1);
+    }
+  }
+
+  
+  nextPage(): void {
+    if (this.currentPage < this.totalPages) {
+      this.loadPage(this.currentPage + 1);
+    }
+  }
+
+  goToPage(page: number): void {
+    this.loadPage(page);
+  }
+
+  get pages(): number[] {
+    return Array.from({ length: this.totalPages }, (_, i) => i + 1);
+  }
 }
+
 
 

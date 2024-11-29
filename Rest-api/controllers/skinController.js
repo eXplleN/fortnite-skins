@@ -1,4 +1,4 @@
-const Skin = require('../models/skin');
+const Skin = require('./models/skin');
 
 
 const getAllSkins = async (req, res) => {

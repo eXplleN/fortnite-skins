@@ -1,24 +1,43 @@
-<div class="skin-grid">
-  @for(skin of skins; track $index){
-  <div class="skin-card">
-    <img [src]="skin.image"  class="skin-image"/>
-    <h3>{{ skin.name }}</h3>
-    <div>
-      <span class="skin-rarity" [ngClass]="getRarityClass(skin.rarity)">
-        {{ skin.rarity }}
-      </span>
+<div class="catalog-container">
+  <div class="skin-grid">
+    @for(skin of displayedSkins; track $index){
+    <div class="skin-card">
+      <img [src]="skin.image" class="skin-image" />
+      <h3>{{ skin.name }}</h3>
+      <div>
+        <span class="skin-rarity" [ngClass]="getRarityClass(skin.rarity)">
+          {{ skin.rarity }}
+        </span>
+      </div>
+      <div class="button-container">
+        <button class="details-button" [routerLink]="['/details', skin._id]">
+          View Details
+        </button>
+        <button class="edit-button" [routerLink]="['/edit', skin._id]">
+          Edit
+        </button>
+        <button class="delete-button" (click)="deleteSkin(skin._id)">
+          Delete
+        </button>
+      </div>
     </div>
-    <div class="button-container">
-      <button class="details-button" [routerLink]="['/details', skin._id]">
-        View Details
-      </button>
-      <button class="edit-button" [routerLink]="['/edit', skin._id]">
-        Edit
-      </button>
-      <button class="delete-button" (click)="deleteSkin(skin._id)">
-        Delete
-      </button>
-    </div>
+    }
   </div>
-  }
+
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="currentPage === 1">
+      Previous
+    </button>
+    @for(page of pages; track $index){
+    <button
+      [class.active]="currentPage === $index + 1"
+      (click)="goToPage($index + 1)"
+    >
+      {{ $index + 1 }}
+    </button>
+    }
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+      Next
+    </button>
+  </div>
 </div>

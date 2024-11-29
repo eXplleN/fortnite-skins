@@ -2,41 +2,101 @@
   max-width: 800px;
   margin: 2rem auto;
   padding: 2rem;
-  background: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: #1e1e1e; 
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); 
+  color: #fff; 
 }
 
 .details-container img {
   width: 100%;
   height: auto;
-  margin-bottom: 1rem;
-  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); 
 }
 
 .details-container h2 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   margin-bottom: 1rem;
-  color: #333;
+  color: #fff; 
+  text-align: center;
+}
+
+.details-container .rarity {
+  display: inline-block;
+  margin-bottom: 3em; 
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  border-radius: 5px;
+  color: #fff;
+  text-align: center;
+}
+
+
+.rarity.common {
+  background-color: gray;
+}
+
+.rarity.uncommon {
+  background-color: green;
+}
+
+.rarity.rare {
+  background-color: blue;
+}
+
+.rarity.epic {
+  background-color: purple;
+}
+
+.rarity.legendary {
+  background-color: gold;
+  color: #000; 
 }
 
 .details-container p {
   margin-bottom: 1rem;
-  color: #666;
+  color: #ccc; 
+  line-height: 1.6;
+  text-align: center; 
 }
 
 .details-container .back-btn {
   display: inline-block;
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
+  border: none;
+  margin: 2rem auto 0; 
+  padding: 0.5rem 1.5rem;
   font-size: 1rem;
-  color: white;
-  background-color: #6c757d;
+  font-weight: bold;
+  color: #fff;
+  background: linear-gradient(45deg, #1e90ff, #ff1493); 
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  transition: background 0.3s, transform 0.3s;
+  text-align: center;
 }
 
 .details-container .back-btn:hover {
-  background-color: #5a6268;
+  background: linear-gradient(45deg, #ff3f14, #e9ff1e); 
+  transform: scale(1.05); 
+}
+
+.details-container .back-btn:active {
+  transform: scale(0.98); 
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+}
+
+
+.details-container .back-btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.details-container .rarity-container {
+  display: flex;
+  justify-content: center;
 }
