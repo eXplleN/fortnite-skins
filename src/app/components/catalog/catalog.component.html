@@ -31,7 +31,7 @@
     @for(page of pages; track $index){
     <button
       [class.active]="currentPage === $index + 1"
-      (click)="goToPage($index + 1)"
+      (click)="goToPage(page)"
     >
       {{ $index + 1 }}
     </button>

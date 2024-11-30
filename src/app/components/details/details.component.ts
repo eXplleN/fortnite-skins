@@ -1,24 +1,40 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Location } from '@angular/common';  
 
 @Component({
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule, RouterModule],
   selector: 'app-details',
   templateUrl: './details.component.html',
   styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
   skin: any = null; 
-  constructor(private route: ActivatedRoute) {}
+  currentPage: number = 1;
 
-  ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id'); 
-    if (id) this.fetchSkinDetails(id); 
+  constructor(
+    private route: ActivatedRoute, 
+    private router: Router,
+    private location: Location  
+  ) {}
+
+  ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      if (params['page']) {
+        this.currentPage = +params['page']; 
+      }
+    });
+
+    this.route.params.subscribe(params => {
+      const skinId = params['id'];  
+      if (skinId) {
+        this.fetchSkinDetails(skinId);  
+      }
+    });
   }
 
-  
   async fetchSkinDetails(id: string) {
     try {
       const response = await fetch(`http://localhost:3000/api/skins/${id}`);
@@ -44,5 +60,9 @@ export class DetailsComponent implements OnInit {
       default:
         return '';
     }
+  }
+
+  goBackToCatalog(): void {
+    this.location.back();
   }
 }

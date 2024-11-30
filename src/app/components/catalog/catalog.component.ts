@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { PageStateService } from '../../services/page.service';
 
 @Component({
   standalone: true,
@@ -16,10 +17,15 @@ export class CatalogComponent implements OnInit {
   itemsPerPage: number = 10; 
   totalPages: number = 0;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private pageStateService: PageStateService) {}
 
-  ngOnInit() {
-    this.fetchSkins(); 
+  ngOnInit(): void {
+    this.activatedRoute.queryParams.subscribe(params => {
+      if (params['page']) {
+        this.currentPage = +params['page'] || 1; 
+      } 
+      this.fetchSkins(); 
+    });
   }
 
   fetchSkins(): void {
@@ -78,23 +84,34 @@ export class CatalogComponent implements OnInit {
   
   prevPage(): void {
     if (this.currentPage > 1) {
-      this.loadPage(this.currentPage - 1);
+      this.goToPage(this.currentPage - 1);
     }
   }
 
   
   nextPage(): void {
     if (this.currentPage < this.totalPages) {
-      this.loadPage(this.currentPage + 1);
+      this.goToPage(this.currentPage + 1);
     }
   }
 
   goToPage(page: number): void {
-    this.loadPage(page);
+    this.currentPage = page; 
+    this.router.navigate([], {
+      relativeTo: this.activatedRoute, 
+      queryParams: { page: this.currentPage }, 
+      queryParamsHandling: 'merge',
+    });
+    this.loadPage(page); 
   }
 
   get pages(): number[] {
     return Array.from({ length: this.totalPages }, (_, i) => i + 1);
+  }
+
+  goToDetails(skinId: string): void {
+    this.pageStateService.setCurrentPage(this.currentPage);
+    this.router.navigate(['/details', skinId]);
   }
 }
 
