@@ -1,13 +1,31 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-header',
   standalone: true,
-  imports: [RouterModule],
+  selector: 'app-header',
+  imports: [RouterModule], 
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  isLoggedIn = false; 
 
+  constructor(private router: Router) {
+    this.checkLoginState(); 
+  }
+
+  
+  checkLoginState() {
+    const token = localStorage.getItem('authToken');
+    this.isLoggedIn = !!token; 
+  }
+
+  
+  logout() {
+    localStorage.removeItem('authToken'); 
+    this.isLoggedIn = false; 
+    this.router.navigate(['/login']); 
+  }
 }
+

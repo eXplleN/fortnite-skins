@@ -2,6 +2,17 @@
   <div class="logo">Fortnite Skins</div>
   <nav>
     <a routerLink="/catalog">Catalog</a>
+
+    @if(isLoggedIn){
     <a routerLink="/add">Add Skin</a>
+    }
+
+    <a routerLink="/register">Register</a>
+
+    @if(!isLoggedIn){
+    <a routerLink="/login">Login</a>
+    } @if(isLoggedIn){
+    <button (click)="logout()">Logout</button>
+    }
   </nav>
 </header>

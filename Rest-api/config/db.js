@@ -1,15 +1,17 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const dbConnector = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI, {
+    const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/fortnite-skins';
+    await mongoose.connect(mongoURI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
-    console.log('Connected to MongoDB');
-  } catch (err) {
-    console.error('Database connection error:', err);
-    throw err;
+    console.log('MongoDB connected successfully');
+  } catch (error) {
+    console.error('MongoDB connection failed:', error);
+    throw error;
   }
 };
 
