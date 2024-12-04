@@ -1,18 +1,18 @@
 <header>
   <div class="logo">Fortnite Skins</div>
   <nav>
-    <a routerLink="/catalog">Catalog</a>
+    <a routerLink="/catalog" [queryParams]="{ page: 1 }">Catalog</a>
 
-    @if(isLoggedIn){
-    <a routerLink="/add">Add Skin</a>
-    }
+    <ng-container *ngIf="isLoggedIn$ | async">
+      <a routerLink="/add">Add Skin</a>
+      <a routerLink="/profile">My Skins</a>
+      <a routerLink="/catalog" (click)="logout()">Logout</a>
+    </ng-container>
 
-    <a routerLink="/register">Register</a>
-
-    @if(!isLoggedIn){
-    <a routerLink="/login">Login</a>
-    } @if(isLoggedIn){
-    <button (click)="logout()">Logout</button>
-    }
+    <ng-container *ngIf="!(isLoggedIn$ | async)">
+      <a routerLink="/register">Register</a>
+      <a routerLink="/login">Login</a>
+    </ng-container>
   </nav>
 </header>
+

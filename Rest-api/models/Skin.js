@@ -5,9 +5,8 @@ const skinSchema = new mongoose.Schema({
   image: { type: String, required: true },
   rarity: { type: String, required: true },
   description: { type: String, required: true },
+  creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  createdAt: { type: Date, default: Date.now }
 });
 
-const Skin = mongoose.model('Skin', skinSchema);
-
-module.exports = Skin;
-
+module.exports = mongoose.model('Skin', skinSchema);

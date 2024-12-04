@@ -1,31 +1,29 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   standalone: true,
   selector: 'app-header',
-  imports: [RouterModule], 
+  imports: [RouterModule, CommonModule], 
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  isLoggedIn = false; 
+  isLoggedIn$;
 
-  constructor(private router: Router) {
-    this.checkLoginState(); 
+  constructor(
+    private userService: UserService, 
+    private router: Router
+  ) {
+    
+    this.isLoggedIn$ = this.userService.isLoggedIn$;
   }
 
-  
-  checkLoginState() {
-    const token = localStorage.getItem('authToken');
-    this.isLoggedIn = !!token; 
-  }
-
-  
   logout() {
-    localStorage.removeItem('authToken'); 
-    this.isLoggedIn = false; 
-    this.router.navigate(['/login']); 
+    this.userService.logout(); 
+    this.router.navigate(['/catalog']); 
   }
 }
 

@@ -17,21 +17,27 @@ export class AddSkinComponent {
 
   async createSkin() {
     try {
+      const token = localStorage.getItem('token'); 
+  
       const response = await fetch('http://localhost:3000/api/skins', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(this.skin)
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`, 
+        },
+        body: JSON.stringify(this.skin),
       });
-
+  
       if (!response.ok) {
-        throw new Error('Failed to create skin.');
+        throw new Error('Failed to create skin. Please check the form and try again.');
       }
-
+  
       alert('Skin added successfully!');
       this.router.navigate(['/catalog']);
     } catch (error) {
-      console.error(error);
-      alert('Error adding skin.');
+      console.error('Error creating skin:', error);
+      alert('Error creating skin. Please try again.');
     }
   }
+  
 }

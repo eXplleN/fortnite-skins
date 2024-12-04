@@ -1,9 +1,9 @@
-const Skin = require('./models/skin');
+const Skin = require('../models/Skin');
 
 
 const getAllSkins = async (req, res) => {
   try {
-    const skins = await Skin.find();
+    const skins = await Skin.find().sort({ _id: -1 });
     res.json(skins);
   } catch (err) {
     res.status(500).json({ message: 'Error fetching skins', error: err });
@@ -24,34 +24,78 @@ const getSkinById = async (req, res) => {
 
 const createSkin = async (req, res) => {
   try {
-    const newSkin = new Skin(req.body);
-    await newSkin.save();
-    res.status(201).json(newSkin);
+    const { name, image, rarity, description } = req.body;
+
+    const newSkin = new Skin({
+      name,
+      image,
+      rarity,
+      description,
+      creator: req.user.userId, 
+    });
+
+    const savedSkin = await newSkin.save();
+    res.status(201).json({ message: 'Skin created successfully!', skin: savedSkin });
   } catch (err) {
-    res.status(400).json({ message: 'Error creating skin', error: err });
+    res.status(500).json({ message: 'Error creating skin.', error: err.message });
   }
 };
 
 
 const updateSkin = async (req, res) => {
   try {
+    const userId = req.user.userId; 
+    const skin = await Skin.findById(req.params.id);
+
+    if (!skin) return res.status(404).json({ message: 'Skin not found' });
+
+    if (skin.creator.toString() !== userId) {
+      return res.status(403).json({ message: 'You are not authorized to update this skin' });
+    }
+
     const updatedSkin = await Skin.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!updatedSkin) return res.status(404).json({ message: 'Skin not found' });
     res.json(updatedSkin);
   } catch (err) {
-    res.status(400).json({ message: 'Error updating skin', error: err });
+    res.status(400).json({ message: 'Error updating skin', error: err.message });
   }
 };
 
 
 const deleteSkin = async (req, res) => {
   try {
-    const deletedSkin = await Skin.findByIdAndDelete(req.params.id);
-    if (!deletedSkin) return res.status(404).json({ message: 'Skin not found' });
-    res.json({ message: 'Skin deleted', skin: deletedSkin });
+    const userId = req.user.userId;
+    const skin = await Skin.findById(req.params.id);
+
+    if (!skin) return res.status(404).json({ message: 'Skin not found' });
+
+    if (skin.creator.toString() !== userId) {
+      return res.status(403).json({ message: 'You are not authorized to delete this skin' });
+    }
+
+    await Skin.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Skin deleted successfully' });
   } catch (err) {
-    res.status(500).json({ message: 'Error deleting skin', error: err });
+    res.status(500).json({ message: 'Error deleting skin', error: err.message });
   }
 };
 
-module.exports = { getAllSkins, getSkinById, createSkin, updateSkin, deleteSkin };
+
+const getUserSkins = async (req, res) => {
+  try {
+    const userId = req.user.userId; 
+    const userSkins = await Skin.find({ creator: userId });
+
+    res.json(userSkins);
+  } catch (err) {
+    res.status(500).json({ message: 'Error fetching user skins', error: err.message });
+  }
+};
+
+module.exports = { 
+  getAllSkins, 
+  getSkinById, 
+  createSkin, 
+  updateSkin, 
+  deleteSkin, 
+  getUserSkins 
+};

@@ -1,39 +1,38 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { UserService } from '../../../services/user.service';
+import { UserService } from '../../../services/user.service'; 
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  standalone: true,
-  imports: [CommonModule, FormsModule],
   selector: 'app-register',
+  standalone: true,
+  imports: [FormsModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  username = '';
-  email = '';
-  password = '';
-  errorMessage = '';
+  username: string = '';
+  email: string = '';
+  password: string = '';
+  errorMessage: string = '';
 
   constructor(private userService: UserService, private router: Router) {}
 
   register() {
-    this.userService
-      .register({ username: this.username, email: this.email, password: this.password })
-      .then((response) => {
-        console.log('Response from backend:', response); 
-        if (response.token) {
-          alert('Registration successful!');
-          this.router.navigate(['/login']);
-        } else {
-          this.errorMessage = response.message; 
-        }
-      })
-      .catch((error) => {
-        console.error('Error occurred:', error); 
-        this.errorMessage = 'Something went wrong. Please try again.';
-      });
+    this.userService.register(this.username, this.email, this.password).subscribe({
+      next: (response) => {
+        
+        localStorage.setItem('token', response.token);
+
+      
+        this.userService.setLoggedIn(true);
+
+        
+        this.router.navigate(['/catalog']);
+      },
+      error: (error) => {
+        this.errorMessage = error.error?.message || 'Registration failed';
+      },
+    });
   }
 }

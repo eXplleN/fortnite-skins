@@ -1,0 +1,20 @@
+<h2>My Skins</h2>
+@if(errorMessage){
+<p class="error">{{ errorMessage }}</p>
+} @if(userSkins.length > 0){
+<div>
+  @for(skin of userSkins; track $index){
+  <div class="skin-item">
+    <h3>{{ skin.name }}</h3>
+    <p>{{ skin.description }}</p>
+
+    <button (click)="deleteSkin(skin._id)">Delete</button>
+    <a [routerLink]="['/edit-skin', skin._id]">Edit</a>
+  </div>
+  }
+</div>
+}@else {
+<ng-template #noSkins>
+  <p>No skins added yet.</p>
+</ng-template>
+}

@@ -19,19 +19,32 @@ export class LoginComponent {
   constructor(private userService: UserService, private router: Router) {}
 
   login() {
-    this.userService
-      .login({ email: this.email, password: this.password })
-      .then((response) => {
+    this.errorMessage = ''; 
+  
+    if (!this.email || !this.password) {
+      this.errorMessage = 'Email and password are required.';
+      return;
+    }
+
+    this.userService.login(this.email, this.password).subscribe({
+      next: (response: { token: string }) => {
         if (response.token) {
+          this.userService.storeToken(response.token); 
+          this.userService.setLoggedIn(true); 
           alert('Login successful!');
-          this.router.navigate(['/home']);
+          
+          this.email = ''; 
+          this.password = '';
+          
+          this.router.navigate(['/catalog']); 
         } else {
-          this.errorMessage = response.message;
+          this.errorMessage = 'Login failed. Please try again.';
         }
-      })
-      .catch((error) => {
+      },
+      error: (error) => {
         console.error('Error logging in:', error);
         this.errorMessage = 'Invalid credentials. Please try again.';
-      });
+      }
+    });
   }
 }
