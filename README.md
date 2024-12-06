@@ -8,6 +8,7 @@
 
 MONGO_URI=mongodb://localhost:27017/fortnite-skins
 PORT=3000
+JWT_SECRET=my$3cureJWT#Key12345
 
 7. Run the "npm start" command in the terminal.
 8. Open the src folder in Integrated Terminal.
