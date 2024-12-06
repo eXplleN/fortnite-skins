@@ -1,14 +1,19 @@
 const Skin = require('../models/Skin');
 
-
 const getAllSkins = async (req, res) => {
   try {
-    const skins = await Skin.find().sort({ _id: -1 });
-    res.json(skins);
+    const userId = req.user ? req.user.userId : null;
+    const filter = userId && req.query.creator ? { creator: userId } : {}; 
+
+    const skins = await Skin.find(filter).sort({ _id: -1 });
+
+    res.json(skins); 
   } catch (err) {
+    console.error('Error fetching skins:', err);
     res.status(500).json({ message: 'Error fetching skins', error: err });
   }
 };
+
 
 
 const getSkinById = async (req, res) => {
@@ -21,10 +26,13 @@ const getSkinById = async (req, res) => {
   }
 };
 
-
 const createSkin = async (req, res) => {
   try {
     const { name, image, rarity, description } = req.body;
+
+    if (!name || !image || !rarity || !description) {
+      return res.status(400).json({ message: 'All fields are required.' });
+    }
 
     const newSkin = new Skin({
       name,
@@ -41,7 +49,6 @@ const createSkin = async (req, res) => {
   }
 };
 
-
 const updateSkin = async (req, res) => {
   try {
     const userId = req.user.userId; 
@@ -53,13 +60,18 @@ const updateSkin = async (req, res) => {
       return res.status(403).json({ message: 'You are not authorized to update this skin' });
     }
 
-    const updatedSkin = await Skin.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const { name, image, rarity, description } = req.body;
+    const updatedSkin = await Skin.findByIdAndUpdate(
+      req.params.id,
+      { name, image, rarity, description },
+      { new: true }
+    );
+
     res.json(updatedSkin);
   } catch (err) {
-    res.status(400).json({ message: 'Error updating skin', error: err.message });
+    res.status(500).json({ message: 'Error updating skin', error: err.message });
   }
 };
-
 
 const deleteSkin = async (req, res) => {
   try {
@@ -79,11 +91,11 @@ const deleteSkin = async (req, res) => {
   }
 };
 
-
 const getUserSkins = async (req, res) => {
   try {
     const userId = req.user.userId; 
-    const userSkins = await Skin.find({ creator: userId });
+    
+    const userSkins = await Skin.find({ creator: userId }).sort({ _id: -1 }); 
 
     res.json(userSkins);
   } catch (err) {

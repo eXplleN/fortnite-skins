@@ -36,7 +36,7 @@ export class LoginComponent {
           this.email = ''; 
           this.password = '';
           
-          this.router.navigate(['/catalog']); 
+          this.router.navigate(['/profile']); 
         } else {
           this.errorMessage = 'Login failed. Please try again.';
         }

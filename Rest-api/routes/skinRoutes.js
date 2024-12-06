@@ -1,4 +1,3 @@
-
 const express = require('express');
 const router = express.Router();
 const { verifyToken } = require('../middleware/authMiddleware');
@@ -13,14 +12,14 @@ const {
 
 router.get('/', getAllSkins);
 
-router.post('/', verifyToken, createSkin);
+router.get('/', verifyToken, getUserSkins);
 
 router.get('/:id', getSkinById);
 
-router.put('/:id',verifyToken, updateSkin);
+router.post('/', verifyToken, createSkin);
+
+router.put('/:id', verifyToken, updateSkin);
 
 router.delete('/:id', verifyToken, deleteSkin);
-
-router.get('/user/my-skins', verifyToken, getUserSkins);
 
 module.exports = router;

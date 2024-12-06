@@ -27,8 +27,8 @@ export class RegisterComponent {
       
         this.userService.setLoggedIn(true);
 
-        
-        this.router.navigate(['/catalog']);
+        alert('Registration successful!');
+        this.router.navigate(['/profile']);
       },
       error: (error) => {
         this.errorMessage = error.error?.message || 'Registration failed';

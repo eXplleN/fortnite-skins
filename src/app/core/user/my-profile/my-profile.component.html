@@ -1,20 +1,39 @@
-<h2>My Skins</h2>
-@if(errorMessage){
-<p class="error">{{ errorMessage }}</p>
-} @if(userSkins.length > 0){
-<div>
-  @for(skin of userSkins; track $index){
-  <div class="skin-item">
-    <h3>{{ skin.name }}</h3>
-    <p>{{ skin.description }}</p>
-
-    <button (click)="deleteSkin(skin._id)">Delete</button>
-    <a [routerLink]="['/edit-skin', skin._id]">Edit</a>
+<div class="profile-container">
+  <div class="logo">My Skins</div>
+  @if(successMessage){
+  <div class="alert alert-success">
+    {{ successMessage }}
   </div>
+  } @if(errorMessage){
+  <div class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+  } @if(userSkins.length > 0){ 
+  <div class="skins-grid">
+    @for(skin of userSkins; track $index){
+    <div class="skin-card">
+      <img [src]="skin.image" alt="{{ skin.name }}"  class="skin-image"/>
+      <h2>{{ skin.name }}</h2>
+      <div>
+        <span class="skin-rarity" [ngClass]="getRarityClass(skin.rarity)">
+          {{ skin.rarity }}
+        </span>
+      </div>
+      <div class="button-container">
+        <button class="details-button" (click)="viewDetails(skin._id)">
+          View Details
+        </button>
+        <button class="edit-button" (click)="editSkin(skin._id)">
+          Edit
+        </button>
+        <button class="delete-button" (click)="deleteSkin(skin._id)">
+          Delete
+        </button>
+      </div>
+    </div>
+    }
+  </div>
+  } @else {
+  <p class="no-skins">You have not created any skins yet.</p>
   }
 </div>
-}@else {
-<ng-template #noSkins>
-  <p>No skins added yet.</p>
-</ng-template>
-}

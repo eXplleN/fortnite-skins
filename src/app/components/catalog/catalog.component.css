@@ -39,25 +39,6 @@
   overflow: hidden;
 }
 
-
-.skin-name {
-  font-size: 22px; 
-  margin: 0;
-  padding: 0 10px;
-  text-transform: capitalize;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-.skin-details {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 15px;
-  font-size: 16px;
-}
-
 .skin-rarity {
   padding: 5px 15px;
   border-radius: 5px;

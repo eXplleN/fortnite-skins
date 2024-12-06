@@ -3,7 +3,7 @@
     @for(skin of displayedSkins; track $index){
     <div class="skin-card">
       <img [src]="skin.image" class="skin-image" />
-      <h3>{{ skin.name }}</h3>
+      <h2>{{ skin.name }}</h2>
       <div>
         <span class="skin-rarity" [ngClass]="getRarityClass(skin.rarity)">
           {{ skin.rarity }}

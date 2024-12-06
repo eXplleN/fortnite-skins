@@ -33,7 +33,7 @@ export class AddSkinComponent {
       }
   
       alert('Skin added successfully!');
-      this.router.navigate(['/catalog']);
+      this.router.navigate(['/profile']);
     } catch (error) {
       console.error('Error creating skin:', error);
       alert('Error creating skin. Please try again.');
