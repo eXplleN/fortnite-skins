@@ -1,0 +1,28 @@
+<div class="wishlist-container">
+  <h2 class="wishlist-heading">Your Wishlist</h2>
+
+  @if(wishlist.length === 0){
+  <div class="empty-wishlist">
+    <p>Your wishlist is empty! Start adding your favorite skins.</p>
+  </div>
+  } @if(wishlist.length > 0){
+  <div class="wishlist-items">
+    @for(skin of wishlist; track $index){
+    <div class="wishlist-item">
+      <img [src]="skin.image" alt="{{ skin.name }}" class="skin-image" />
+
+      <h2 class="skin-name">{{ skin.name }}</h2>
+      <div>
+        <span class="skin-rarity" [ngClass]="getRarityClass(skin.rarity)">
+          {{ skin.rarity }}
+        </span>
+      </div>
+      <p class="description">{{ skin.description }}</p>
+      <button (click)="removeFromWishlist(skin._id)" class="remove-button">
+        Remove
+      </button>
+    </div>
+    }
+  </div>
+  }
+</div>

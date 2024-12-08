@@ -1,5 +1,6 @@
 @if(skin){
-  <div class="details-container">
+<div class="details-container">
+  <div class="skin-card">
     <img [src]="skin.image" [alt]="skin.name" />
     <h2 class="details-header">{{ skin.name }}</h2>
     <div class="rarity-container">
@@ -10,7 +11,12 @@
     <p>{{ skin.description }}</p>
     <div class="back-btn-container">
       <button (click)="goBackToCatalog()" class="back-btn">Back</button>
+      @if(isAuthenticated){
+      <div>
+        <button (click)="addToWishlist()" class="back-btn">Add to Wishlist</button>
+      </div>
+      }
     </div>
   </div>
+</div>
 }
-

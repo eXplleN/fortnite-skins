@@ -74,4 +74,57 @@ const getUserProfile = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, loginUser, logoutUser, getUserProfile };
+const getWishlist = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId).populate('skins');
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+    res.json({ skins: user.skins });
+  } catch (error) {
+    console.error('Error fetching wishlist:', error);
+    res.status(500).json({ message: 'Error fetching wishlist' });
+  }
+};
+
+const addToWishlist = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    const { skinId } = req.body;
+
+    if (user.skins.includes(skinId)) {
+      return res.status(400).json({ message: 'Skin already in wishlist' });
+    }
+
+    user.skins.push(skinId);
+    await user.save();
+    res.status(200).json({ message: 'Skin added to wishlist', skins: user.skins });
+  } catch (error) {
+    console.error('Error adding skin to wishlist:', error);
+    res.status(500).json({ message: 'Error adding skin to wishlist' });
+  }
+};
+
+const removeFromWishlist = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    user.skins = user.skins.filter(skin => skin.toString() !== req.params.skinId);
+    await user.save();
+    res.status(200).json({ message: 'Skin removed from wishlist', skins: user.skins });
+  } catch (error) {
+    console.error('Error removing skin from wishlist:', error);
+    res.status(500).json({ message: 'Error removing skin from wishlist' });
+  }
+};
+
+
+
+module.exports = { registerUser, loginUser, logoutUser, getUserProfile, getWishlist, addToWishlist, removeFromWishlist };

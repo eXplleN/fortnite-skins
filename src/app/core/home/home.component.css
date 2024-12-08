@@ -1,0 +1,199 @@
+.home-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  color: #333;
+  text-shadow: 0 0 5px #00FFFF, 0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 40px #00FFFF;
+}
+
+.hero p {
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: #333;
+  text-shadow: 0 0 5px #00FFFF, 0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 40px #00FFFF;
+  margin-bottom: 30px;
+}
+
+.hero .cta-button {
+  display: inline-block;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #1e90ff, #ff1493);
+  transition: background 0.3s, transform 0.3s;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  text-align: center;
+  width: auto; 
+  max-width: 250px; 
+  margin: 0 auto; 
+}
+
+
+.hero .cta-button:hover{
+  background: linear-gradient(45deg, #ff3f14, #e9ff1e);
+  transform: scale(1.05);
+}
+
+.featured-skins {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.featured-skins h2{
+  text-shadow: 0 0 5px #FF1493, 0 0 10px #FF1493, 0 0 20px #FF1493, 0 0 40px #FF1493;
+}
+
+.skins-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.skin-card {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+  width: 180px;
+}
+
+.skin-card img {
+  border-radius: 8px;
+  width: 100%;
+  max-height: 140px;
+  margin-bottom: 1rem;
+}
+
+.skin-card p {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+  margin-bottom: 15px;
+  text-shadow: 0 0 5px #FF1493, 0 0 10px #FF1493, 0 0 20px #FF1493, 0 0 40px #FF1493;
+}
+
+.skin-card a {
+  display: inline-block;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #1e90ff, #ff1493);
+  transition: background 0.3s, transform 0.3s;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.skin-card a:hover {
+  background: linear-gradient(45deg, #ff3f14, #e9ff1e);
+  transform: scale(1.05);
+}
+
+.skin-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.quick-navigation {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.quick-navigation h2 {
+  font-size: 1.5rem;
+  color: #fff;
+  text-shadow: 0 0 5px #00FFFF, 0 0 10px #00FFFF, 0 0 20px #00FFFF, 0 0 40px #00FFFF;
+  margin-bottom: 1rem;
+}
+
+.quick-navigation nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.quick-navigation a {
+  display: inline-block;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #1e90ff, #ff1493);
+  transition: background 0.3s, transform 0.3s;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.quick-navigation a:hover {
+  background: linear-gradient(45deg, #ff3f14, #e9ff1e);
+  transform: scale(1.05);
+}
+
+.quick-navigation i {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.quick-navigation span {
+  font-size: 1rem;
+}
+
+.skin-rarity {
+  padding: 5px 15px;
+  border-radius: 5px;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+.skin-rarity.common {
+  background-color: gray;
+  color: #000;
+}
+
+.skin-rarity.uncommon {
+  background-color: green;
+  color: #000;
+}
+
+.skin-rarity.rare {
+  background-color: blue;
+  color: #000;
+}
+
+.skin-rarity.epic {
+  background-color: purple;
+  color: #000;
+}
+
+.skin-rarity.legendary {
+  background-color: gold;
+  color: #000;
+}

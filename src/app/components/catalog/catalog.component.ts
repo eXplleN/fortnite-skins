@@ -14,7 +14,7 @@ export class CatalogComponent implements OnInit {
   skins: any[] = []
   displayedSkins: any[] = [];
   currentPage: number = 1; 
-  itemsPerPage: number = 10; 
+  itemsPerPage: number = 6; 
   totalPages: number = 0;
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private pageStateService: PageStateService) {}

@@ -1,11 +1,13 @@
 <header>
   <div class="logo">Fortnite Skins</div>
   <nav>
+    <a routerLink="/">Home</a>
     <a routerLink="/catalog" [queryParams]="{ page: 1 }">Catalog</a>
     @if(isLoggedIn$ | async){
-    <a routerLink="/add">Add Skin</a>
-    <a routerLink="/profile">My Skins</a>
-    <a routerLink="/catalog" (click)="logout()">Logout</a>
+      <a routerLink="/wishlist">Wishlist</a> 
+      <a routerLink="/add">Add Skin</a>
+      <a routerLink="/profile">My Skins</a>
+    <a routerLink="/home" (click)="logout()">Logout</a>
     } @if(!(isLoggedIn$ | async)){
     <a routerLink="/register">Register</a>
     <a routerLink="/login">Login</a>

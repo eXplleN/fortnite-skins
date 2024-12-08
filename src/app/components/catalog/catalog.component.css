@@ -1,26 +1,50 @@
+.catalog-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.header {
+  font-size: 40px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: white;
+  background-color: transparent;
+  text-align: center;
+  text-shadow: 0 0 5px #FF1493, 0 0 10px #FF1493, 0 0 20px #FF1493, 0 0 40px #FF1493;
+  margin-bottom: 20px;
+}
+
 .skin-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
   gap: 20px;
   padding: 20px;
-  background-color: #121212;
+  
 }
 
 .skin-card {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  background: #1e1e1e;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   color: #fff;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s;
-  width: 300px; 
-  height: 430px;
-  margin: auto; 
+  width: 100%;
+  max-width: 300px;
+  height: 400px; 
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding: 15px;
+}
+
+.skin-card h2 {
+  text-shadow: 0 0 5px #FF1493, 0 0 10px #FF1493, 0 0 20px #FF1493, 0 0 40px #FF1493;
 }
 
 .skin-card:hover {
@@ -29,14 +53,10 @@
 }
 
 .skin-image {
-  width: 100%; 
-  height: 380px; 
-  max-height: 380px; 
-  object-fit: contain; 
-  display: block;
-  background-color: #000; 
-  margin: 0 auto; 
-  overflow: hidden;
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  border-radius: 10px;
 }
 
 .skin-rarity {
@@ -48,32 +68,27 @@
 
 .skin-rarity.common {
   background-color: gray;
-  color: #fff;
+  color: #000;
 }
 
 .skin-rarity.uncommon {
   background-color: green;
-  color: #fff;
+  color: #000;
 }
 
 .skin-rarity.rare {
   background-color: blue;
-  color: #fff;
+  color: #000;
 }
 
 .skin-rarity.epic {
   background-color: purple;
-  color: #fff;
+  color: #000;
 }
 
 .skin-rarity.legendary {
   background-color: gold;
   color: #000;
-}
-
-.skin-price {
-  font-weight: bold;
-  color: #f5f5f5;
 }
 
 .button-container {
@@ -121,6 +136,7 @@
 }
 
 .pagination button {
+  font-family: 'Orbitron', sans-serif;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   background: #1e1e1e;

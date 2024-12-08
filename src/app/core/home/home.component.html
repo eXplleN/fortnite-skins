@@ -1,0 +1,55 @@
+<div class="home-container">
+  <div class="hero">
+    <h1>Welcome to Fortnite Skins!</h1>
+    <p>Discover, collect, and manage your favorite Fortnite skins.</p>
+    <a routerLink="/catalog" class="cta-button">Explore Skins</a>
+  </div>
+
+  <div class="featured-skins">
+    <h2>Featured Skins</h2>
+    <div class="skins-grid">
+      @for(skin of featuredSkins; track $index){
+      <div class="skin-card">
+        <img [src]="skin.image" [alt]="skin.name" />
+        <p>{{ skin.name }}</p>
+        <div>
+          <span class="skin-rarity" [ngClass]="getRarityClass(skin.rarity)">
+            {{ skin.rarity }}
+          </span>
+        </div>
+        <a [routerLink]="['/details', skin._id]" class="details-button"
+          >View Details</a
+        >
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="quick-navigation">
+    <h2>Quick Navigation</h2>
+    <nav>
+      @if(!isLoggedIn){
+
+      <a routerLink="/catalog">
+        <span>Catalog</span>
+      </a>
+      <a routerLink="/register">
+        <span>Register</span>
+      </a>
+      <a routerLink="/login">
+        <span>Login</span>
+      </a>
+      } @if(isLoggedIn){
+      <a routerLink="/catalog">
+        <span>Catalog</span>
+      </a>
+      <a routerLink="/wishlist">
+        <span>Wishlist</span>
+      </a>
+      <a routerLink="/profile">
+        <span>My Skins</span>
+      </a>
+      }
+    </nav>
+  </div>
+</div>

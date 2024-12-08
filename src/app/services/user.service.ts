@@ -16,8 +16,8 @@ interface Skin {
 })
 export class UserService {
   private apiUrl = 'http://localhost:3000/api'; 
-  private isLoggedInSubject = new BehaviorSubject<boolean>(this.isUserLoggedIn());
   private tokenKey = 'token'; 
+  private isLoggedInSubject = new BehaviorSubject<boolean>(this.isUserLoggedIn());
 
   isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
 
@@ -69,6 +69,15 @@ export class UserService {
     return localStorage.getItem(this.tokenKey);
   }
 
+  getUserId(): string | null {
+    const token = localStorage.getItem(this.tokenKey);
+    if (token) {
+      const decodedToken = JSON.parse(atob(token.split('.')[1])); 
+      return decodedToken.userId;  
+    }
+    return null;
+  }
+
   getProtectedData() {
     const token = this.getToken();
     if (token) {
@@ -109,6 +118,31 @@ export class UserService {
     return this.http.delete(`${this.apiUrl}/skins/${skinId}`, {
       headers: this.getAuthHeaders(),
     });
+  }
+
+  getWishlist(): Observable<any> {
+    const userId = this.getUserId(); 
+    if (userId) {
+      return this.http.get(`/wishlist/${userId}`); 
+    }
+    throw new Error('User not logged in');
+  }
+
+  addToWishlist(skinId: string): Observable<any> {
+    const userId = this.getUserId(); 
+    if (userId) {
+      return this.http.post(`/wishlist/${userId}`, { skinId });
+    }
+    throw new Error('User not logged in');
+  }
+
+  
+  removeFromWishlist(skinId: string): Observable<any> {
+    const userId = this.getUserId(); 
+    if (userId) {
+      return this.http.delete(`/wishlist/${userId}/${skinId}`);
+    }
+    throw new Error('User not logged in');
   }
 
   private getAuthHeaders(): HttpHeaders {
