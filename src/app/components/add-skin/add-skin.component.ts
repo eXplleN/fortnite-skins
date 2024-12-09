@@ -38,6 +38,8 @@ export class AddSkinComponent {
       console.error('Error creating skin:', error);
       alert('Error creating skin. Please try again.');
     }
+    console.log('nice');
   }
+  
   
 }
