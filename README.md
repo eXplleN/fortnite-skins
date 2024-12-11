@@ -66,7 +66,9 @@ The project follows a **client-server architecture** with the following structur
 6. In ".env" file paste this: 
 
 MONGO_URI=mongodb://localhost:27017/fortnite-skins
+
 PORT=3000
+
 JWT_SECRET=my$3cureJWT#Key12345
 
 7. Open the src folder in Integrated Terminal.
