@@ -7,7 +7,10 @@ const {
   getSkinById, 
   updateSkin, 
   deleteSkin,
-  getUserSkins 
+  getUserSkins,
+  likeSkin,
+  dislikeSkin,
+  getLikesDislikes 
 } = require('../controllers/skinController');
 
 router.get('/', getAllSkins);
@@ -21,5 +24,11 @@ router.post('/', verifyToken, createSkin);
 router.put('/:id', verifyToken, updateSkin);
 
 router.delete('/:id', verifyToken, deleteSkin);
+
+router.post('/:id/like', verifyToken, likeSkin);
+
+router.post('/:id/dislike', verifyToken, dislikeSkin);
+
+router.get('/:id/likes-dislikes', getLikesDislikes);
 
 module.exports = router;

@@ -7,6 +7,8 @@ interface Skin {
   name: string;
   image: string;
   rarity: string;
+  like: [];
+  dislike: [];
   description: string;
   creator: string;
 }
@@ -151,4 +153,23 @@ export class UserService {
       Authorization: `Bearer ${token}`,
     });
   }
+
+  likeSkin(skinId: string) {
+    const token = localStorage.getItem('token');
+    return this.http.post<any>(`${this.apiUrl}/skins/${skinId}/like`, {}, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+  }
+  
+  dislikeSkin(skinId: string) {
+    const token = localStorage.getItem('token');
+    return this.http.post<any>(`${this.apiUrl}/skins/${skinId}/dislike`, {}, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+  }
+  
+  getLikesDislikes(skinId: string): Observable<any> {
+    return this.http.get(`/skins/${skinId}/like`, { headers: this.getAuthHeaders() });
+  }
+  
 }

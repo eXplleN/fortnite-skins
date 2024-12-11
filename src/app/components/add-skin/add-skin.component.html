@@ -1,19 +1,56 @@
 <div class="form-container">
-    <h2>Add Skin</h2>
-    <form (ngSubmit)="createSkin()" #skinForm="ngForm">
-      <label for="name">Name:</label>
-      <input type="text" id="name" [(ngModel)]="skin.name" name="name" required />
-  
-      <label for="image">Image URL:</label>
-      <input type="text" id="image" [(ngModel)]="skin.image" name="image" required />
-  
-      <label for="rarity">Rarity:</label>
-      <input type="text" id="rarity" [(ngModel)]="skin.rarity" name="rarity" required />
-  
-      <label for="description">Description:</label>
-      <textarea id="description" [(ngModel)]="skin.description" name="description" required></textarea>
-  
-      <button type="submit">Add Skin</button>
-    </form>
-  </div>
-  
+  <h2>Add Skin</h2>
+  <form [formGroup]="skinForm" (ngSubmit)="createSkin()">
+    
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name" />
+    @if(skinForm.get('name')?.touched && skinForm.get('name')?.invalid){
+      <div class="error">
+        @if(skinForm.get('name')?.hasError('required')){
+          <p>Name is required.</p>
+        }
+        @if(skinForm.get('name')?.hasError('minlength')){
+          <p>Name must be at least 3 characters long.</p>
+        }
+      </div>
+    }
+
+    <label for="image">Image URL:</label>
+    <input type="text" id="image" formControlName="image" />
+    @if(skinForm.get('image')?.touched && skinForm.get('image')?.invalid){
+      <div class="error">
+        @if(skinForm.get('image')?.hasError('required')){
+          <p>Image URL is required.</p>
+        }
+        @if(skinForm.get('image')?.hasError('pattern')){
+          <p>Please enter a valid URL (e.g., http://example.com).</p>
+        }
+      </div>
+    }
+
+    <label for="rarity">Rarity:</label>
+    <input type="text" id="rarity" formControlName="rarity" />
+    @if(skinForm.get('rarity')?.touched && skinForm.get('rarity')?.invalid){
+      <div class="error">
+        @if(skinForm.get('rarity')?.hasError('required')){
+          <p>Rarity is required.</p>
+        }
+      </div>
+    }
+
+    <label for="description">Description:</label>
+    <textarea id="description" formControlName="description"></textarea>
+    @if(skinForm.get('description')?.touched && skinForm.get('description')?.invalid){
+      <div class="error">
+        @if(skinForm.get('description')?.hasError('required')){
+          <p>Description is required.</p>
+        }
+        @if(skinForm.get('description')?.hasError('minlength')){
+          <p>Description must be at least 10 characters long.</p>
+        }
+      </div>
+    }
+
+    <button type="submit" [disabled]="skinForm.invalid">Add Skin</button>
+  </form>
+</div>

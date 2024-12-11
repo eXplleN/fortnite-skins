@@ -1,0 +1,270 @@
+[{
+  "_id": {
+    "$oid": "6759ba6909da3add98de6861"
+  },
+  "likes": [],
+  "dislikes": [],
+  "name": "Galaxy",
+  "image": "https://w0.peakpx.com/wallpaper/749/224/HD-wallpaper-fortnite-galaxy-skin-fortnite-background-galaxy-skin-galaxy-skin-fortnite-samsung-galaxy-skin-samsung-skin.jpg",
+  "rarity": "Legendary",
+  "description": "A rare Galaxy series skin.",
+  "creator": {
+    "$oid": "6759b80d09da3add98de685a"
+  },
+  "createdAt": {
+    "$date": "2024-12-11T16:14:33.534Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6759baac09da3add98de686e"
+  },
+  "likes": [],
+  "dislikes": [],
+  "name": "Dark Knight",
+  "image": "https://i.pinimg.com/736x/a2/03/ee/a203eed7f04a21b0d61f93a65d4d20a5.jpg",
+  "rarity": "Legendary",
+  "description": "A dark, brooding figure from the shadows.",
+  "creator": {
+    "$oid": "6759b80d09da3add98de685a"
+  },
+  "createdAt": {
+    "$date": "2024-12-11T16:15:40.331Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6759baeb09da3add98de6871"
+  },
+  "likes": [],
+  "dislikes": [],
+  "name": "Recon Expert",
+  "image": "https://wallpapercave.com/wp/wp3966038.png",
+  "rarity": "Common",
+  "description": "A tactical specialist known for stealth operations.",
+  "creator": {
+    "$oid": "6759b80d09da3add98de685a"
+  },
+  "createdAt": {
+    "$date": "2024-12-11T16:16:43.279Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6759bb0c09da3add98de6874"
+  },
+  "likes": [],
+  "dislikes": [],
+  "name": "Ninja",
+  "image": "https://wallpapercave.com/wp/wp5256905.jpg",
+  "rarity": "Epic",
+  "description": "A fast and stealthy warrior who can vanish in the blink of an eye.",
+  "creator": {
+    "$oid": "6759b80d09da3add98de685a"
+  },
+  "createdAt": {
+    "$date": "2024-12-11T16:17:16.587Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6759bb4109da3add98de6877"
+  },
+  "likes": [],
+  "dislikes": [],
+  "name": "Skull Trooper",
+  "image": "https://mrwallpaper.com/images/high/cool-fortnite-skin-skull-trooper-ugrkuctcvtigq3w5.jpg",
+  "rarity": "Rare",
+  "description": "A skeleton warrior who strikes fear in the heart of enemies.",
+  "creator": {
+    "$oid": "6759b80d09da3add98de685a"
+  },
+  "createdAt": {
+    "$date": "2024-12-11T16:18:09.200Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6759c13209da3add98de687c"
+  },
+  "likes": [],
+  "dislikes": [],
+  "name": "The Reaper",
+  "image": "https://i.pinimg.com/736x/0b/7b/3e/0b7b3e96a2a25a58362072b83fd6a847.jpg",
+  "rarity": "Legendary",
+  "description": "A master of death, with a grim reaper theme and a haunting presence.",
+  "creator": {
+    "$oid": "6759b80d09da3add98de685a"
+  },
+  "createdAt": {
+    "$date": "2024-12-11T16:43:30.859Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6759c15409da3add98de687f"
+  },
+  "likes": [],
+  "dislikes": [],
+  "name": "Drift",
+  "image": "https://wallpapercave.com/wp/wp3147250.jpg",
+  "rarity": "Epic",
+  "description": "A mysterious and colorful skin with a neon mask and glowing patterns.",
+  "creator": {
+    "$oid": "6759b80d09da3add98de685a"
+  },
+  "createdAt": {
+    "$date": "2024-12-11T16:44:04.832Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6759c19409da3add98de6882"
+  },
+  "likes": [],
+  "dislikes": [],
+  "name": "Raven",
+  "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpvDf4xHQd_wz248Gqc0_N92AilvyKJHuw9w&s",
+  "rarity": "Legendary",
+  "description": "A shadowy figure with a mysterious and ominous appearance, embodying the dark arts.",
+  "creator": {
+    "$oid": "6759b80d09da3add98de685a"
+  },
+  "createdAt": {
+    "$date": "2024-12-11T16:45:08.073Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6759c1b909da3add98de6885"
+  },
+  "likes": [],
+  "dislikes": [],
+  "name": "Bunny Brawler",
+  "image": "https://media.fortniteapi.io/images/cosmetics/4a01aa4-70df324-0678838-f191df0/v2/MI_CID_104_F_Bunny/background.png",
+  "rarity": "Uncommon",
+  "description": "A cute yet fierce bunny-themed skin, perfect for Easter-themed gameplay.",
+  "creator": {
+    "$oid": "6759b80d09da3add98de685a"
+  },
+  "createdAt": {
+    "$date": "2024-12-11T16:45:45.574Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6759c1ee09da3add98de6888"
+  },
+  "likes": [],
+  "dislikes": [],
+  "name": "Ghoul Trooper",
+  "image": "https://media.fortniteapi.io/images/cosmetics/4bf99a26c1fb6050488094e8926f0cbf/v2/background.png",
+  "rarity": "Rare",
+  "description": "Scary lady.",
+  "creator": {
+    "$oid": "6759b80d09da3add98de685a"
+  },
+  "createdAt": {
+    "$date": "2024-12-11T16:46:38.228Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6759c94b09da3add98de688f"
+  },
+  "likes": [],
+  "dislikes": [],
+  "name": "Deadpool",
+  "image": "https://i.pinimg.com/736x/7e/b7/a9/7eb7a91146c4bf1bc3381791d3aa071e.jpg",
+  "rarity": "Rare",
+  "description": "Maximum effort",
+  "creator": {
+    "$oid": "6759b80d09da3add98de685a"
+  },
+  "createdAt": {
+    "$date": "2024-12-11T17:18:03.794Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6759c98209da3add98de6892"
+  },
+  "likes": [],
+  "dislikes": [],
+  "name": "Jhon Wick",
+  "image": "https://media.fortniteapi.io/images/cosmetics/46c716ab2a39918a9825a2847455aaed/v2/MI_CID_416_M_AssassinSuit_04/background.png",
+  "rarity": "Epic",
+  "description": "Baba Yaga.",
+  "creator": {
+    "$oid": "6759b80d09da3add98de685a"
+  },
+  "createdAt": {
+    "$date": "2024-12-11T17:18:58.212Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6759c9ad09da3add98de6895"
+  },
+  "likes": [],
+  "dislikes": [],
+  "name": "Midas",
+  "image": "https://wallpapercave.com/wp/wp5610216.jpg",
+  "rarity": "Epic",
+  "description": "The King of Gold, his touch turns everything to gold.",
+  "creator": {
+    "$oid": "6759b80d09da3add98de685a"
+  },
+  "createdAt": {
+    "$date": "2024-12-11T17:19:41.929Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6759c9d709da3add98de6898"
+  },
+  "likes": [],
+  "dislikes": [],
+  "name": "BWL",
+  "image": "https://progameguides.com/wp-content/uploads/2021/10/fortnite-outfit-the-batman-who-laughs.jpg?resize=768,803",
+  "rarity": "Epic",
+  "description": "The mad man.",
+  "creator": {
+    "$oid": "6759b80d09da3add98de685a"
+  },
+  "createdAt": {
+    "$date": "2024-12-11T17:20:23.780Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6759c9fd09da3add98de689b"
+  },
+  "likes": [],
+  "dislikes": [],
+  "name": "The Joker",
+  "image": "https://d.techtimes.com/en/full/375616/fortnite-last-laugh-bundle.jpg?w=1600&h=1600&q=88&f=bfde02ec698cce2014d2bfedfbb33054",
+  "rarity": "Legendary",
+  "description": "Why so serious?",
+  "creator": {
+    "$oid": "6759b80d09da3add98de685a"
+  },
+  "createdAt": {
+    "$date": "2024-12-11T17:21:01.471Z"
+  },
+  "__v": 0
+}]

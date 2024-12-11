@@ -1,18 +1,26 @@
 <div class="catalog-container">
   <h2 class="header">Catalog</h2>
   <div class="skin-grid">
-    @for(skin of displayedSkins; track $index){
+    @for(skin of displayedSkins; track $index) {
     <div class="skin-card">
       <img [src]="skin.image" class="skin-image" />
       <h2>{{ skin.name }}</h2>
-      <div>
+      <div class="rarity-and-vote">
+        <p>👍🏻 {{ skin.likes.length }}</p>
         <span class="skin-rarity" [ngClass]="getRarityClass(skin.rarity)">
           {{ skin.rarity }}
         </span>
+        <p>👎🏻 {{ skin.dislikes.length }}</p>
       </div>
       <div class="button-container">
+        <button class="like-button" (click)="likeSkin(skin._id, skin)">
+          👍🏻
+        </button>
         <button class="details-button" [routerLink]="['/details', skin._id]">
           View Details
+        </button>
+        <button class="dislike-button" (click)="dislikeSkin(skin._id, skin)">
+          👎🏻
         </button>
       </div>
     </div>
@@ -23,14 +31,15 @@
     <button (click)="prevPage()" [disabled]="currentPage === 1">
       Previous
     </button>
-    @for(page of pages; track $index){
+
     <button
-      [class.active]="currentPage === $index + 1"
+      *ngFor="let page of pages"
+      [class.active]="currentPage === page"
       (click)="goToPage(page)"
     >
-      {{ $index + 1 }}
+      {{ page }}
     </button>
-    }
+
     <button (click)="nextPage()" [disabled]="currentPage === totalPages">
       Next
     </button>

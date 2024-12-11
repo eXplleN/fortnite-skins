@@ -1,3 +1,4 @@
+const { log } = require('@angular-devkit/build-angular/src/builders/ssr-dev-server');
 const Skin = require('../models/Skin');
 
 const getAllSkins = async (req, res) => {
@@ -39,10 +40,14 @@ const createSkin = async (req, res) => {
       image,
       rarity,
       description,
+      likes: [],
+      dislikes: [],
       creator: req.user.userId, 
     });
-
+    console.log(newSkin);
+    
     const savedSkin = await newSkin.save();
+    console.log(savedSkin);
     res.status(201).json({ message: 'Skin created successfully!', skin: savedSkin });
   } catch (err) {
     res.status(500).json({ message: 'Error creating skin.', error: err.message });
@@ -103,11 +108,81 @@ const getUserSkins = async (req, res) => {
   }
 };
 
+const likeSkin = async (req, res) => {
+  const { skinId } = req.params;
+  const userId = req.user.id;  
+
+  try {
+    const skin = await Skin.findById(skinId);
+    if (!skin) {
+      return res.status(404).json({ message: 'Skin not found' });
+    }
+
+    if (skin.likes.includes(userId)) {
+      return res.status(400).json({ message: 'User has already liked this skin' });
+    }
+
+    skin.likes.push(userId);
+    await skin.save();
+
+    res.status(200).json({ message: 'Skin liked successfully', skin });
+  } catch (error) {
+    console.error('Error liking skin:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+const dislikeSkin = async (req, res) => {
+  const { skinId } = req.params;
+  const userId = req.user.id;  
+
+  try {
+    const skin = await Skin.findById(skinId);
+    if (!skin) {
+      return res.status(404).json({ message: 'Skin not found' });
+    }
+
+    if (skin.dislikes.includes(userId)) {
+      return res.status(400).json({ message: 'User has already disliked this skin' });
+    }
+
+    skin.dislikes.push(userId);
+    await skin.save();
+
+    res.status(200).json({ message: 'Skin disliked successfully', skin });
+  } catch (error) {
+    console.error('Error disliking skin:', error);
+    res.status(500).json({ message: 'Server error' });
+  }
+};
+
+
+const getLikesDislikes = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const skin = await Skin.findById(id);
+
+    if (!skin) {
+      return res.status(404).json({ message: "Skin not found" });
+    }
+
+    res.status(200).json({
+      likes: skin.likes,
+      dislikes: skin.dislikes
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = { 
   getAllSkins, 
   getSkinById, 
   createSkin, 
   updateSkin, 
   deleteSkin, 
-  getUserSkins 
+  getUserSkins,
+  likeSkin,
+  dislikeSkin,
+  getLikesDislikes 
 };

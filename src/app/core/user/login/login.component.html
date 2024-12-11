@@ -1,27 +1,50 @@
 <div class="login-container">
   <h2>Login</h2>
-  <form (ngSubmit)="login()">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
     <div>
       <label for="email">Email:</label>
       <input
         type="email"
         id="email"
-        [(ngModel)]="email"
+        formControlName="email"
         required
-        name="email"
       />
+      @if(loginForm.get('email')?.touched && loginForm.get('email')?.invalid){
+        <div class="error">
+          @if(loginForm.get('email')?.hasError('required')){
+            <p>Email is required.</p>
+          }
+          @if(loginForm.get('email')?.hasError('email')){
+            <p>Please enter a valid email address.</p>
+          }
+        </div>
+      }
     </div>
+
     <div>
       <label for="password">Password:</label>
       <input
         type="password"
         id="password"
-        [(ngModel)]="password"
+        formControlName="password"
         required
-        name="password"
       />
+      @if(loginForm.get('password')?.touched && loginForm.get('password')?.invalid){
+        <div class="error">
+          @if(loginForm.get('password')?.hasError('required')){
+            <p>Password is required.</p>
+          }
+          @if(loginForm.get('password')?.hasError('minlength')){
+            <p>Password must be at least 8 characters long.</p>
+          }
+        </div>
+      }
     </div>
-    <button type="submit">Login</button>
+
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
   </form>
-  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+  @if(errorMessage){
+    <p class="error">{{ errorMessage }}</p>
+  }
 </div>

@@ -3,7 +3,6 @@ const express = require("express");
 const cors = require("cors");
 const userRoutes = require("./routes/userRoutes");
 const skinRoutes = require("./routes/skinRoutes");
-const wishlistRoutes = require('./routes/wishlist.routes');
 const protectedRoutes = require("./routes/protectedRoutes");
 const dbConnector = require("./config/db");
 const { errorHandler } = require("./utils/errorHandler");

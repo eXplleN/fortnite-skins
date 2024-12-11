@@ -72,4 +72,42 @@ router.delete('/skins/:id', async (req, res) => {
   }
 });
 
+router.post('/:skinId/like', async (req, res) => {
+  try {
+    const skin = await Skin.findById(req.params.skinId);
+    if (!skin) return res.status(404).json({ message: 'Skin not found' });
+
+    const userId = req.user.id;  
+
+    if (skin.likes.includes(userId)) {
+      return res.status(400).json({ message: 'You already liked this skin' });
+    }
+
+    skin.likes.push(userId);
+    await skin.save();
+    res.status(200).json({ message: 'Skin liked successfully', skin });
+  } catch (error) {
+    res.status(500).json({ message: 'Error liking skin' });
+  }
+});
+
+router.post('/:skinId/dislikes', async (req, res) => {
+  try {
+    const skin = await Skin.findById(req.params.skinId);
+    if (!skin) return res.status(404).json({ message: 'Skin not found' });
+
+    const userId = req.user.id;  
+
+    if (skin.dislikes.includes(userId)) {
+      return res.status(400).json({ message: 'You already disliked this skin' });
+    }
+
+    skin.dislikes.push(userId);
+    await skin.save();
+    res.status(200).json({ message: 'Skin disliked successfully', skin });
+  } catch (error) {
+    res.status(500).json({ message: 'Error disliking skin' });
+  }
+});
+
 module.exports = router; 
